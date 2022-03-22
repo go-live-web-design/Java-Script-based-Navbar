@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.min.css" />
+    <title>Dynamic Scrolling</title>
+  </head>
+  <style type="text/css">
+    @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+ * {
+   box-sizing: border-box;
+}
+ html {
+   scroll-behavior: smooth;
+}
+ :root {
+   --transition: 0.3s ease-in-out all;
+   --spacing: 2px;
+   --clr-white: #fff;
+   --clr-grey-5: #817d7d;
+   --clr-grey-1: #cabbbb;
+   --clr-secondary: darkred;
+}
+ body {
+   margin: 0 auto;
+   padding: 0;
+}
+ ul li {
+   list-style: none;
+   text-transform: capitalize;
+}
+ a {
+   text-decoration: none;
+}
+ .btn {
+   text-transform: uppercase;
+   background: transparent;
+   color: black;
+   padding: 10px 8px;
+   letter-spacing: 2px;
+   display: inline-block;
+   transition: 0.3s ease-in-out all;
+   font-size: 18px;
+   border: 2px solid black;
+   cursor: pointer;
+   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+   border-radius: 7px;
+}
+ .btn:hover {
+   color: #fff;
+   background: black;
+}
+ .btn-white {
+   color: var(--clr-white);
+   border-color: var(--clr-white);
+   border-radius: 0;
+   padding: 8px 10px;
+}
+ .btn-white:hover {
+   opacity: 0.2;
+}
+/* section */
+ .section {
+   padding-bottom: 80px;
+}
+ .section-center {
+   width: 90vw;
+   margin: 0 auto;
+   max-width: 1170px;
+}
+ @media screen and (min-width: 992px) {
+   .section-center {
+     width: 95vw;
+  }
+}
+ main {
+   min-height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+/* =============== Scroll =============== */
+/* navbar */
+ nav {
+   background: #fff;
+   padding: 10px 10px;
+}
+/* fixed nav */
+ .fixed-nav {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   background: #fff;
+   box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+ .fixed-nav .links a {
+   color: black;
+}
+ .fixed-nav .links a:hover {
+   opacity: 0.9;
+}
+/* .fixed-nav .links-container {
+   height: auto !important;
+}
+ */
+ .nav-header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+ .nav-toggle {
+   font-size: 25px;
+   color: black;
+   background: transparent;
+   border-color: transparent;
+   transition: 0.3s ease-in-out all;
+   cursor: pointer;
+}
+ .nav-toggle:hover {
+   opacity: 0.2;
+}
+ .logo {
+   height: 50px;
+   color: black;
+   font-size: 30px;
+}
+ .links-container {
+   height: 0;
+   overflow: hidden;
+   transition: var(--transition);
+}
+ .links a {
+   background: var(--clr-white);
+   color: black;
+   font-size: 1.1rem;
+   text-transform: capitalize;
+   letter-spacing: var(--spacing);
+   display: block;
+   transition: var(--transition);
+   font-weight: bold;
+   padding: 0.75rem 0;
+}
+ .links a:hover {
+   opacity: 0.5;
+}
+ @media screen and (min-width: 800px) {
+   nav {
+     background: transparent;
+  }
+   nav .nav-center {
+     width: 90vw;
+     max-width: 1170px;
+     margin: 0 auto;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+  }
+   nav .nav-center .nav-header {
+     padding: 0;
+  }
+   nav .nav-center .nav-header .nav-toggle {
+     display: none;
+  }
+   nav .nav-center .links-container {
+     height: auto !important;
+  }
+   nav .nav-center .links {
+     display: flex;
+  }
+   nav .nav-center .links a {
+     background: transparent;
+     color: black;
+     font-size: 1.1rem;
+     text-transform: capitalize;
+     letter-spacing: var(--spacing);
+     display: block;
+     transition: var(--transition);
+     margin: 0 1rem;
+     font-weight: bold;
+     padding: 0;
+  }
+   nav .nav-center .links a:hover {
+     opacity: 0.2;
+  }
+   nav .nav-center .logo {
+     color: black;
+  }
+}
+/* hero */
+ header {
+   min-height: 100vh;
+   background: linear-gradient(rgba(63, 208, 212, 0.5), rgba(0, 0, 0, 0.7)), url(../images/hero-bcg.jpeg) center/cover no-repeat;
+}
+ .banner {
+   min-height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+ .container h1 {
+   color: var(--clr-white);
+   text-transform: uppercase;
+}
+ .container p {
+   color: var(--clr-white);
+   max-width: 400px;
+   margin: 0 auto;
+   margin-bottom: 15px;
+}
+ @media screen and (min-width: 768px) {
+   .container p {
+     max-width: 640px;
+  }
+}
+/* sections and title */
+ .title h2 {
+   text-align: center;
+   text-transform: uppercase;
+}
+ .title span {
+   color: var(--clr-secondary);
+}
+ #about, #services, #tours {
+   height: 80vh;
+}
+ #services {
+   background: var(--clr-white);
+}
+ footer {
+   background: var(--clr-grey-1);
+   padding: 80px 20px;
+}
+ footer p {
+   color: var(--clr-white);
+   text-align: center;
+   text-transform: capitalize;
+   letter-spacing: var(--spacing);
+   margin-bottom: 0;
+}
+ .top-link {
+   font-size: 18px;
+   position: fixed;
+   bottom: 40px;
+   right: 30px;
+   background: blue;
+   width: 33px;
+   height: 33px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 7px;
+   color: var(--clr-white);
+   animation: bounce 2s ease-in-out infinite;
+   visibility: hidden;
+   z-index: -100;
+}
+ .show-link {
+   visibility: visible;
+   z-index: 100;
+}
+ @keyframes bounce {
+   0% {
+     transform: scale(1);
+  }
+   50% {
+     transform: scale(1.5);
+  }
+   100% {
+     transform: scale(1);
+  }
+}
+ 
+  </style>
+  <body>
+    <header id="home">
+      <!-- navbar -->
+      <nav id="nav">
+        <div class="nav-center">
+          <!-- nav header -->
+          <div class="nav-header">
+            <h1 class="logo" alt="logo">Logo</h1>
+            <button class="nav-toggle">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+          <!-- links -->
+          <div class="links-container">
+            <ul class="links">
+              <li>
+                <a href="#home" class="scroll-link">home</a>
+              </li>
+              <li>
+                <a href="#about" class="scroll-link">about</a>
+              </li>
+              <li>
+                <a href="#services" class="scroll-link">services</a>
+              </li>
+              <li>
+                <a href="#tours" class="scroll-link">tours</a>
+              </li>
+ 
+ 
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- banner -->
+      <div class="banner">
+        <div class="container">
+          <h1>Dynamic scrolling</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos
+            neque sunt in? Id, necessitatibus quos quisquam distinctio
+            laudantium fugiat?
+          </p>
+          <a href="#tours" class="scroll-link btn btn-white">explore tours</a>
+        </div>
+      </div>
+    </header>
+    <!-- about -->
+    <section id="about" class="section">
+      <div class="title">
+        <h2>about <span>us</span></h2>
+      </div>
+    </section>
+    <!-- services -->
+    <section id="services" class="section">
+      <div class="title">
+        <h2>our <span>services</span></h2>
+      </div>
+    </section>
+    <!-- contact -->
+    <section id="tours" class="section">
+      <div class="title">
+        <h2>featured <span>tours</span></h2>
+      </div>
+    </section>
+    <!-- footer -->
+    <footer class="section">
+      <p>
+        copyright &copy; 
+        <span id="date">2020</span> all rights reserved
+      </p>
+    </footer>
+    <a class="scroll-link top-link" href="#home">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="./js/main.js"></script>
+  </body>
+  <script type="text/javascript">
+    // dynamic date in footer
+
+const date = document.getElementById("date");
+
+date.innerHTML = new Date().getFullYear();
+
+// setting navBar toogler
+
+const linkContainer = document.querySelector(".links-container");
+const links = document.querySelector(".links");
+const toggler = document.querySelector(".nav-toggle");
+
+toggler.addEventListener("click", function () {
+  //   linkContainer.classList.toggle("show-links");
+  const containerHeight = linkContainer.getBoundingClientRect().height;
+  const linksHeight = links.getBoundingClientRect().height;
+
+  if (containerHeight === 0) {
+    linkContainer.style.height = `${linksHeight}px`;
+  } else {
+    linkContainer.style.height = 0;
+  }
+});
+
+// fixed navBar
+
+const navBar = document.getElementById("nav");
+const aboutSec = document.getElementById("about");
+const topLink = document.querySelector(".top-link");
+// const showTopLink = document.querySelector(".show-links");
+
+window.addEventListener("scroll", function () {
+  const scrolling = window.pageYOffset;
+  const navHeight = navBar.getBoundingClientRect().height;
+  const aboutSecHeight = aboutSec.getBoundingClientRect().height;
+
+  if (scrolling > navHeight) {
+    navBar.classList.add("fixed-nav");
+  } else {
+    navBar.classList.remove("fixed-nav");
+  }
+  if (scrolling > aboutSecHeight) {
+    topLink.classList.add("show-link");
+  } else {
+    topLink.classList.remove("show-link");
+  }
+});
+
+// scrolling exactly to sections
+
+const scrollingSections = document.querySelectorAll(".scroll-link");
+
+scrollingSections.forEach(function (lin) {
+  lin.addEventListener("click", function (e) {
+    e.preventDefault();
+    const linAtt = e.currentTarget.getAttribute("href").slice(1);
+    const elementId = document.getElementById(linAtt);
+
+    const navHeight = navBar.getBoundingClientRect().height;
+    const containerHeight = linkContainer.getBoundingClientRect().height;
+
+    const fixedNav = navBar.classList.contains("fixed-nav");
+    let position = elementId.offsetTop - navHeight;
+
+    if (navHeight > 82) {
+      position += containerHeight;
+    }
+
+    if (!fixedNav) {
+      position -= navHeight;
+    }
+
+    window.scrollTo({
+      left: 0,
+      top: position,
+    });
+    linkContainer.style.height = 0;
+  });
+});
+  </script>
+</html>
